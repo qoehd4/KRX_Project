@@ -5,11 +5,17 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.HashMap;
 
+import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
-import com.fasterxml.jackson.core.JsonParser;
+import com.amazonaws.services.dynamodbv2.document.DynamoDB;
+import com.amazonaws.services.dynamodbv2.document.Item;
+import com.amazonaws.services.dynamodbv2.document.PutItemOutcome;
+import com.amazonaws.services.dynamodbv2.document.Table;
+import com.amazonaws.services.dynamodbv2.model.PutItemRequest;
 
 
 public class KrxAPIkospi {
@@ -30,13 +36,29 @@ public class KrxAPIkospi {
 		
 		String response = sb.toString();
 		
-		
 		JSONParser parser = new JSONParser();
 		JSONObject   obj =  (JSONObject) parser.parse(response);
-		System.out.println(obj);
-		System.out.println(obj.get("OutBlock_1"));
-		JSONObject last = new JSONObject();
-		System.out.println(last);
+		JSONArray data = (JSONArray) obj.get("OutBlock_1");
+
+		
+		HashMap<String, String> input = new HashMap<String, String>();
+		input.put("Day", "20230328");
+		input.put("Data", data.toString());
+		JSONObject price = new JSONObject(input);
+		Item item =Item.fromJSON(price.toString());
+		System.out.println(item);
+		
+		DynamoDbMaker dbMaker = new DynamoDbMaker("AKIA2MVM52HD6L36Z4X4", "YZUxJhbQBA+0O+R9ljkl8Wxw7JEpXbNeYxdfJDmQ");
+		DynamoDB dynamoDB = dbMaker.getDdb();
+		
+		Table table = dynamoDB.getTable("Kospi");
+		PutItemOutcome result = table.putItem(item);
+		System.out.println(result);
+		
+		
+		
+		
+
 		
 		
 		
