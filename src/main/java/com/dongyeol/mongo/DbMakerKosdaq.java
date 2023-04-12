@@ -19,13 +19,13 @@ import org.json.simple.parser.JSONParser;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 
-public class DbMaker {
+public class DbMakerKosdaq {
 
 	public static void main(String[] args) throws Exception {
 		
 		ConnectToMongo conn = new ConnectToMongo(27017);
 		MongoDatabase db = conn.getDatabase("StockKr");
-		MongoCollection<Document> kospiCollenction = db.getCollection("kospi");
+		MongoCollection<Document> kospiCollenction = db.getCollection("kosdaq");
 		List<String> daylist = makeDaylist();
 		
 		
@@ -46,7 +46,7 @@ public class DbMaker {
 				// TODO: handle exception
 			}
 			try {
-				Thread.sleep(100);
+				Thread.sleep(50);
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -60,7 +60,7 @@ public class DbMaker {
 	}
 	
 	public static List<Document>  getDocumentList(String day) throws Exception {
-		String baseUrl = "http://data-dbg.krx.co.kr/svc/apis/sto/stk_bydd_trd?basDd=day";
+		String baseUrl = "http://data-dbg.krx.co.kr/svc/apis/sto/ksq_bydd_trd?basDd=day";
 		String requestUrl  =  baseUrl.replace("day", day);
 	
 		
