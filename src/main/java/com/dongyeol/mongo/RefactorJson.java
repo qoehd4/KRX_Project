@@ -60,7 +60,7 @@ public class RefactorJson {
 			corp.remove("TDD_HGPRC");
 			corp.remove("TDD_LWPRC");
 			corp.remove("ACC_TRDVAL");
-			
+			System.out.println(corp);
 			corps.add(corp);
 			
 			
