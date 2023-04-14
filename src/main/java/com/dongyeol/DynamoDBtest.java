@@ -21,7 +21,7 @@ public class DynamoDBtest {
 				.withRegion("ap-southeast-2")
 				.withCredentials(
 						new AWSStaticCredentialsProvider(
-								new BasicAWSCredentials("AKIA2MVM52HD6L36Z4X4", "YZUxJhbQBA+0O+R9ljkl8Wxw7JEpXbNeYxdfJDmQ")
+								new BasicAWSCredentials()
 								))
 				.build(); // 이녀석 옛날이름이 AmazonDynamoDBClinet임!!!!!!!!!!!!!!!!!!!1
 
