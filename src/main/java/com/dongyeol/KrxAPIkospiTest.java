@@ -28,7 +28,7 @@ import com.amazonaws.services.dynamodbv2.model.PutItemResult;
 public class KrxAPIkospiTest {
 	
 	public static void main(String[] args) throws Exception {
-		DynamoDbMaker dbMaker = new DynamoDbMaker("AKIA2MVM52HD6L36Z4X4", "YZUxJhbQBA+0O+R9ljkl8Wxw7JEpXbNeYxdfJDmQ");
+		DynamoDbMaker dbMaker = new DynamoDbMaker();
 		DynamoDB dynamoDB = dbMaker.getDdb();
 		
 		Table table = dynamoDB.getTable("Kospi");
