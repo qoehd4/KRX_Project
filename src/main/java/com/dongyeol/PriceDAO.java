@@ -16,7 +16,7 @@ import com.amazonaws.services.dynamodbv2.model.AttributeValue;
 public class PriceDAO {
 
 	public static void main(String[] args) throws ParseException {
-		DynamoDbMaker maker = new DynamoDbMaker("AKIA2MVM52HD6L36Z4X4", "YZUxJhbQBA+0O+R9ljkl8Wxw7JEpXbNeYxdfJDmQ");
+		DynamoDbMaker maker = new DynamoDbMaker("", "");
 		DynamoDB ddb = maker.getDdb();
 		
 		Table table = ddb.getTable("Kospi");
