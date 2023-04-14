@@ -37,7 +37,7 @@ public class KrxAPIkospiTest {
 		
 		for(String day:daylist) {
 			try {
-				PutItemOutcome outcome = table.putItem(createItemKospi(day, "DD0DFC1FA0E24D1F96A8B50BB69A245520AA9CD0"));
+				PutItemOutcome outcome = table.putItem(createItemKospi(day, ""));
 				PutItemResult result = outcome.getPutItemResult();
 				System.out.println(result.getConsumedCapacity());
 			} catch (Exception e) {
